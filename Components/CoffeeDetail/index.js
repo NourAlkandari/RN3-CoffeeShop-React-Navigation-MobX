@@ -12,7 +12,8 @@ import {
   List,
   ListItem,
   Picker,
-  Content
+  Content,
+  Icon
 } from "native-base";
 
 // Style
@@ -22,6 +23,22 @@ import styles from "./styles";
 import coffeeStore from "../../store/coffeeStore";
 
 class CoffeeDetail extends Component {
+  static navigationOptions = props => {
+    return {
+      title: props.navigation.getParam("coffeeShop").name,
+      headerRight: (
+        <Icon
+          style={{ marginRight: 10 }}
+          name="shopping-cart"
+          type="Feather"
+          onPress={() => {
+            props.navigation.navigate("Cart");
+          }}
+        />
+      )
+    };
+  };
+
   state = {
     drink: "Cappuccino",
     option: "Small"
@@ -41,8 +58,9 @@ class CoffeeDetail extends Component {
 
   render() {
     const coffeeshops = coffeeStore.coffeeshops;
-    if (!coffeeshops) return <Content />;
-    const coffeeshop = coffeeshops[0];
+    if (!coffeeshops) return <Content />; //¿what does it mean?
+    const coffeeshop = this.props.navigation.getParam("coffeeShop");
+
     return (
       <Content>
         <List>

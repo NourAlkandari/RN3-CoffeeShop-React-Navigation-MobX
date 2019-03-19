@@ -9,10 +9,13 @@ import styles from "./styles";
 
 class CoffeeItem extends Component {
   handlePress = () => {
-    alert("Pressed");
+    this.props.navigation.navigate("Detail", {
+      coffeeShop: this.props.coffeeShop
+    });
   };
   render() {
     const { coffeeShop } = this.props;
+    console.log(coffeeShop);
     return (
       <ImageBackground
         source={{ uri: coffeeShop.background }}

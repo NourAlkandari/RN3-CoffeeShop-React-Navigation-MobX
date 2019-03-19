@@ -16,6 +16,7 @@ import {
 } from "native-base";
 
 class Login extends Component {
+  static navigationOptions = {};
   render() {
     return (
       <Content>
@@ -53,10 +54,22 @@ class Login extends Component {
               </Form>
             </Body>
           </ListItem>
-          <Button full success>
+          <Button
+            onPress={() => {
+              this.props.navigation.navigate("List");
+            }}
+            full
+            success
+          >
             <Text>Login</Text>
           </Button>
-          <Button full warning>
+          <Button
+            onPress={() => {
+              this.props.navigation.navigate("List");
+            }}
+            full
+            warning
+          >
             <Text>Register</Text>
           </Button>
         </List>
